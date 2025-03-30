@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 
 /**
  * Convierte URLs en texto plano a enlaces clicables
@@ -35,18 +35,20 @@ export const linkifyText = (text: string) => {
     // Asegurarse de que la URL tenga el protocolo correcto para el enlace
     const href = url.startsWith('www.') ? `https://${url}` : url;
     
-    // Añadir el enlace como elemento React
+    // Añadir el enlace como elemento React usando createElement
     parts.push(
-      <a 
-        key={match.index} 
-        href={href} 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="text-blue-500 hover:underline"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {url}
-      </a>
+      createElement(
+        'a',
+        {
+          key: match.index,
+          href: href,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          className: "text-blue-500 hover:underline",
+          onClick: (e) => e.stopPropagation()
+        },
+        url
+      )
     );
     
     // Actualizar el último índice procesado
