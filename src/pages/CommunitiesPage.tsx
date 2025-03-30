@@ -1,9 +1,8 @@
 import { CommunityList } from "../components/CommunityList";
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 
 export const CommunitiesPage = () => {
-  const { user } = useAuth();
+
   
   return (
     <div className="pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
