@@ -57,6 +57,9 @@ export const PostList = () => {
   const { data, error, isLoading } = useQuery<Post[], Error>({
     queryKey: ["posts"],
     queryFn: fetchPosts,
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
+    staleTime: 1000 * 60 * 5, // 5 minutos
   });
 
   if (isLoading) {
